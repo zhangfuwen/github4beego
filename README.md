@@ -11,14 +11,12 @@ go get github.com/zhangfuwen/github4beego
 ## 1.2 Usage
 ```go
 githubController = github4beego.NewGithubController("clientId","secretKey","/after_login")
-beego.Router("/github_login", githubController, "get:FirstLogin")`
+beego.Router("/github_login", githubController, "get:FirstLogin")
 beego.Router("/after_login", githubController,"get:SuccessRedirected")
 ```
 `clientId` and `secretKey` is what you got when you apply a application at github.
 
-When user want to login, you gave them a link first for then to click and login with github. The link could be `/github_login` or anything you like, as long as it's served with `githubController`'s FirstLogin method, user will be redirected to github and finished the authentication process. Then user's User info is got from github and stored in user's session store.
-
-The user will then be redirected to `/after_login` or anything you like. You can then access user's User info. A example is given in githubController's SuccessRedirected method which prints out User to responseWriter. You can use it as a test. And then copy the code to serve your own page.
+When a user want to login, you gave them a link first for her/him to click and login with github. The link could be `/github_login` or anything you like, as long as it's served with `githubController`'s FirstLogin method, the user will be redirected to github and finish the authentication process. When everything is finished, the user's User info will be retrieved from github and stored in user's session store and the user will then be redirected to `/after_login` or anything you like. You can then access user's User info. A example is given in githubController's SuccessRedirected method which prints out User to responseWriter. You can use it as a test. And then copy the code to serve your own page.
 
 For your reference, SucessRedirected method is listed below:
 ```go

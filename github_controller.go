@@ -1,4 +1,4 @@
-package controllers
+package github4beego
 
 import (
 	"encoding/gob"

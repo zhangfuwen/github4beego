@@ -16,8 +16,10 @@ beego.Router("/after_login", githubController,"get:SuccessRedirected")
 ```
 `clientId` and `secretKey` is what you got when you apply a application at github.
 
+# 2. How it works
 When a user wants to login, you gave her/him a link first for her/him to click and login with github. The link could be `/github_login` or anything you like, as long as it's served with `githubController`'s FirstLogin method, the user will be redirected to github and finish the authentication process. When everything is finished, the user's User info will be retrieved from github and stored in user's session and the user will then be redirected to `/after_login` or anything you like. You can then access user's User info. A example is given in githubController's SuccessRedirected method which prints out User to responseWriter. You can use it as a test. And then copy the code to serve your own page.
 
+# 3. More
 For your reference, SucessRedirected method is listed below:
 ```go
 func (this *GithubHandler) SucessRedirected() {
